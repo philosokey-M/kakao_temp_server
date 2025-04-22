@@ -53,7 +53,7 @@ router.post('/sayHello', function(req, res) {
 
   const getAnswer = async(question) => {
     // RAG API URL - 법령
-    const url = `http://192.168.0.42:8880/_keit/_api/legal`
+    const url = `http://company.i-bricks.co.kr:8880/_keit/_api/legal`
     
     // body
     const data={
