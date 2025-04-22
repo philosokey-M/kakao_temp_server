@@ -10,13 +10,15 @@ router.post('/hello', async (req, res) => {
 
     answer = await getAnswer(question);
 
+    let parsedAnswer = await getParsedAnswer(answer)
+
     const responseBody = {
         version: "2.0",
         template: {
             outputs: [
                 {
                     simpleText: {
-                        text: answer
+                        text: parsedAnswer
                     }
                 }
             ]
@@ -73,4 +75,30 @@ router.post('/sayHello', function(req, res) {
     return response.data;
 
   }
+
+
+  const getParsedAnswer = async(answer) => {
+    
+    let parsedAnswer =``;
+
+    for(result of answer.results){
+
+        const chapter = result.chapter;
+        const article = result.article;
+        const title = result.title;
+        const contents = result.contents;
+
+        parsedAnswer += `
+        <${chapter} ${article}>\n\n
+        ${title}\n
+        ${contents}\n
+        `;
+        
+    }
+    console.log('parsedAnswer :',parsedAnswer);
+    
+
+    return parsedAnswer;
+  }
+
 module.exports = router;
