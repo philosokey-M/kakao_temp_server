@@ -1,9 +1,9 @@
 const express = require('express');
-
+const axios = require('axios');
 const router = express.Router();
 
 // 간단한 응답 라우트 정의
-router.get('/hello', async (req, res) => {
+router.post('/hello', async (req, res) => {
     console.log('body :',req.body);
     const body = req.body;
     const question = body.userRequest.utterance;
@@ -51,7 +51,7 @@ router.post('/sayHello', function(req, res) {
 
   const getAnswer = async(question) => {
     // RAG API URL - 법령
-    const url = `http://192.168.0.42:8881/_keit/_api/legal`
+    const url = `http://192.168.0.42:8880/_keit/_api/legal`
     
     // body
     const data={
