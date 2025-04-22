@@ -24,7 +24,7 @@ router.get('/hello', async (req, res) => {
     };
     
 
-    res.send('Hello, this is a response from hello.js!');
+    res.status(200).send(responseBody);
 });
 
 
