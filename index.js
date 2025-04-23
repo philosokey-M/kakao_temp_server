@@ -10,6 +10,7 @@ app.use(logger('dev', {}));
 app.use(bodyParser.json());
 
 apiRouter.use('/skill', require('./skill/hello'));
+apiRouter.use('/skill/query', require('./skill/query'));
 app.use('/api', apiRouter);
 
 const PORT = process.env.PORT || 3000;
